@@ -1,0 +1,22 @@
+{
+	"name": "inteve/utils",
+	"type": "library",
+	"description": "Utility classes for web development",
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Jan Pecha",
+			"homepage": "https://www.janpecha.cz/"
+		}
+	],
+	"require": {
+		"php": ">=5.6.0",
+		"nette/utils": "^2.4 || ^3.1"
+	},
+	"autoload": {
+		"classmap": ["src/"]
+	},
+	"require-dev": {
+		"nette/tester": "^2.0"
+	}
+}
