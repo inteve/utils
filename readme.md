@@ -19,6 +19,14 @@ Inteve\Utils requires PHP 5.6.0 or later.
 
 ## Usage
 
+**DateTimeFactory**
+
+```php
+$dateTimeFactory = new Inteve\Utils\DateTimeFactory;
+$now = $dateTimeFactory->create();
+```
+
+
 **Imagick**
 
 ``` php
