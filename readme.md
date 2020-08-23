@@ -38,6 +38,14 @@ ImagickHelper::saveImage($imagick, 'thumb.jpg');
 // and much more!
 ```
 
+
+**PaginatorHelper**
+
+```php
+$paginator = new Nette\Utils\Paginator;
+$steps = Inteve\Utils\PaginatorHelper::calculateSteps($paginator);
+```
+
 ------------------------------
 
 License: [New BSD License](license.md)
