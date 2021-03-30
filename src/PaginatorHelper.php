@@ -20,7 +20,7 @@
 			$page = $paginator->page;
 
 			if ($paginator->pageCount < 2) {
-				return array($page);
+				return [$page];
 			}
 
 			$arr = range(max($paginator->firstPage, $page - 3), min($paginator->lastPage, $page + 3));
