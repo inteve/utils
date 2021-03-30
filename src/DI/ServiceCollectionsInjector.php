@@ -8,6 +8,9 @@
 
 	class ServiceCollectionsInjector extends Nette\DI\CompilerExtension
 	{
+		/**
+		 * @return void
+		 */
 		public function beforeCompile()
 		{
 			$builder = $this->getContainerBuilder();
@@ -108,6 +111,8 @@
 		/**
 		 * Parse value pieces of requested annotation from given doc comment
 		 *
+		 * @param  string $annotation
+		 * @param  string $docComment
 		 * @return array<string>
 		 */
 		private static function parseAnnotationValues($annotation, $docComment)

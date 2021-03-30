@@ -10,6 +10,6 @@
 		 */
 		public function create()
 		{
-			return new \DateTimeImmutable(NULL, new \DateTimeZone('UTC'));
+			return new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
 		}
 	}

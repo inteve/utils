@@ -35,9 +35,9 @@
 
 
 		/**
-		 * @param  int
-		 * @param  int
-		 * @param  string|NULL
+		 * @param  int $width
+		 * @param  int $height
+		 * @param  string|NULL $background
 		 * @return Imagick
 		 */
 		public static function newImage($width, $height, $background = NULL)
@@ -49,14 +49,14 @@
 			$image = new Imagick;
 			$image->newImage($width, $height, new ImagickPixel(isset($background) ? strtoupper("#{$background}FF") : 'transparent'));
 			$image->setColorSpace(Imagick::COLORSPACE_SRGB);
-			$image->setOption('png:color-type', 6); // http://www.imagemagick.org/script/command-line-options.php#define + http://stackoverflow.com/a/36417545
+			$image->setOption('png:color-type', '6'); // http://www.imagemagick.org/script/command-line-options.php#define + http://stackoverflow.com/a/36417545
 			$image->setImageFormat('png32');
 			return $image;
 		}
 
 
 		/**
-		 * @param  string
+		 * @param  string $path
 		 * @return Imagick
 		 */
 		public static function openImage($path)
@@ -71,8 +71,7 @@
 
 
 		/**
-		 * @param  Imagick
-		 * @param  string
+		 * @param  string $path
 		 * @return void
 		 */
 		public static function saveImage(Imagick $image, $path)
@@ -94,10 +93,8 @@
 
 
 		/**
-		 * @param  Imagick
-		 * @param  Imagick
-		 * @param  int
-		 * @param  int
+		 * @param  int $x
+		 * @param  int $y
 		 * @return void
 		 */
 		public static function composite(Imagick $destination, Imagick $source, $x, $y)
@@ -116,23 +113,21 @@
 
 
 		/**
-		 * @param  Imagick
-		 * @param  float
+		 * @param  float $scale
 		 * @return void
 		 */
 		public static function scale(Imagick $image, $scale)
 		{
 			$width = $image->getImageWidth() * $scale;
 			$height = $image->getImageHeight() * $scale;
-			$image->resizeImage($width, $height, Imagick::FILTER_LANCZOS, 1, 0);
+			$image->resizeImage((int) round($width), (int) round($height), Imagick::FILTER_LANCZOS, 1, FALSE);
 		}
 
 
 		/**
-		 * @param  Imagick
-		 * @param  int|string|NULL
-		 * @param  int|string|NULL
-		 * @param  int
+		 * @param  int|string|NULL $width
+		 * @param  int|string|NULL $height
+		 * @param  int $flags
 		 * @return void
 		 */
 		public static function resize(Imagick $image, $width, $height, $flags = self::FIT)
@@ -146,7 +141,7 @@
 			[$newWidth, $newHeight] = Image::calculateSize($image->getImageWidth(), $image->getImageHeight(), $width, $height, $flags);
 
 			if ($newWidth !== $image->getImageWidth() || $newHeight !== $image->getImageHeight()) { // resize
-				$image->resizeImage($newWidth, $newHeight, Imagick::FILTER_LANCZOS, 1, 0);
+				$image->resizeImage($newWidth, $newHeight, Imagick::FILTER_LANCZOS, 1, FALSE);
 			}
 
 			if ($width < 0 || $height < 0) {
@@ -162,7 +157,6 @@
 
 
 		/**
-		 * @param  Imagick
 		 * @return void
 		 */
 		public static function autocrop(Imagick $image)
@@ -173,7 +167,6 @@
 
 
 		/**
-		 * @param  Imagick
 		 * @param  int|string  $left in pixels or percent
 		 * @param  int|string  $top in pixels or percent
 		 * @param  int|string  $width in pixels or percent
@@ -189,7 +182,7 @@
 
 
 		/**
-		 * @param  Imagick|ImagickDraw
+		 * @param  Imagick|ImagickDraw $resource
 		 * @return void
 		 */
 		public static function destroyResource($resource)

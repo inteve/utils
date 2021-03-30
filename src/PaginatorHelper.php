@@ -12,8 +12,7 @@
 
 
 		/**
-		 * @param  \Nette\Utils\Paginator
-		 * @return array
+		 * @return int[]
 		 */
 		public static function calculateSteps(\Nette\Utils\Paginator $paginator)
 		{
