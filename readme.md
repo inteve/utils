@@ -46,6 +46,32 @@ $paginator = new Nette\Utils\Paginator;
 $steps = Inteve\Utils\PaginatorHelper::calculateSteps($paginator);
 ```
 
+
+**XmlDocument**
+
+```php
+$xml = new Inteve\Utils\XmlDocument([
+	'standalone' => 'yes',
+]);
+$root = $xml->create('urlset');
+
+$item = $root->create('url');
+$item->create('loc')->setText('http://example.com/');
+
+echo $xml->toString();
+```
+
+Prints:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<urlset>
+	<url>
+		<loc>http://example.com/</loc>
+	</url>
+</urlset>
+```
+
 ------------------------------
 
 License: [New BSD License](license.md)
