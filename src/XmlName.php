@@ -38,4 +38,13 @@
 		{
 			return $this->namespace;
 		}
+
+
+		/**
+		 * @return string
+		 */
+		public function toDebugString()
+		{
+			return $this->name . ' (' . $this->namespace->getUri() . ')';
+		}
 	}

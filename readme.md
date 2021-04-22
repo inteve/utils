@@ -72,6 +72,38 @@ Prints:
 </urlset>
 ```
 
+**XmlQuery**
+
+Wrapper of SimpleXml.
+
+```php
+$query = Inteve\Utils\XmlQuery::fromString('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<urlset>
+	<url>
+		<loc>http://example.com/</loc>
+	</url>
+	<url>
+		<loc>http://example.com/path</loc>
+	</url>
+</urlset>');
+
+$urls = [];
+
+foreach ($query->children('url') as $url) {
+	$urls[] = $url->child('loc')->text();
+}
+
+var_dump($urls);
+```
+
+Prints:
+
+```
+http://example.com/
+http://example.com/path
+```
+
+
 ------------------------------
 
 License: [New BSD License](license.md)
