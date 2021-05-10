@@ -138,7 +138,7 @@
 				return;
 			}
 
-			[$newWidth, $newHeight] = Image::calculateSize($image->getImageWidth(), $image->getImageHeight(), $width, $height, $flags);
+			list($newWidth, $newHeight) = Image::calculateSize($image->getImageWidth(), $image->getImageHeight(), $width, $height, $flags);
 
 			if ($newWidth !== $image->getImageWidth() || $newHeight !== $image->getImageHeight()) { // resize
 				$image->resizeImage($newWidth, $newHeight, Imagick::FILTER_LANCZOS, 1, FALSE);
@@ -175,7 +175,7 @@
 		 */
 		public static function crop(Imagick $image, $left, $top, $width, $height)
 		{
-			[$x, $y, $width, $height] = Image::calculateCutout($image->getImageWidth(), $image->getImageHeight(), $left, $top, $width, $height);
+			list($x, $y, $width, $height) = Image::calculateCutout($image->getImageWidth(), $image->getImageHeight(), $left, $top, $width, $height);
 			$image->cropImage($width, $height, $x, $y);
 			$image->setImagePage(0, 0, 0, 0);
 		}
