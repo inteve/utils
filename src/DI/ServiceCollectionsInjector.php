@@ -102,7 +102,9 @@
 						continue;
 					}
 
-					$factory->arguments[$paramName] = $builder->findByType($paramTypes[$paramName]);
+					$factory->arguments[$paramName] = array_filter($builder->findByType($paramTypes[$paramName]), function ($wiredDefinition) use ($definition) {
+						return $wiredDefinition !== $definition;
+					});
 				}
 			}
 		}
