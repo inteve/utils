@@ -34,7 +34,13 @@
 					continue;
 				}
 
-				$rc = new \ReflectionClass($factory->entity);
+				$className = $factory->entity;
+
+				if (!class_exists($className)) {
+					continue;
+				}
+
+				$rc = new \ReflectionClass($className);
 				$constructor = $rc->getConstructor();
 
 				if (!$constructor) {

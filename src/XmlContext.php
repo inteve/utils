@@ -39,7 +39,7 @@
 
 
 		/**
-		 * @return XmlNamespace
+		 * @return XmlNamespace|NULL
 		 */
 		public function getImplicitNamespace()
 		{

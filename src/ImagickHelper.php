@@ -84,8 +84,12 @@
 			} catch (\Nette\IOException $e) {
 				if (!is_dir(dirname($path))) {
 					$er = error_get_last();
-					$ex = new \RuntimeException("Trying to create directory failed with error '" . $er['message'] . "'", $er['type'], $e);
-					throw $ex;
+
+					if ($er === NULL) {
+						throw new InvalidStateException("Trying to create directory failed with unknow error", 0, $e);
+					}
+
+					throw new InvalidStateException("Trying to create directory failed with error '" . $er['message'] . "'", $er['type'], $e);
 				}
 			}
 			$image->writeImage($path);
@@ -108,7 +112,7 @@
 			$halfHeight = $source->getImageHeight() / 2;
 			$localX += $x - $halfWidth;
 			$localY += $y - $halfHeight;
-			$destination->compositeImage($source, Imagick::COMPOSITE_DEFAULT, $localX, $localY);
+			$destination->compositeImage($source, Imagick::COMPOSITE_DEFAULT, (int) round($localX), (int) round($localY));
 		}
 
 
@@ -133,6 +137,10 @@
 		public static function resize(Imagick $image, $width, $height, $flags = self::FIT)
 		{
 			if ($flags & self::EXACT) {
+				if ($width === NULL || $height === NULL) {
+					throw new InvalidArgumentException('Missing width or height for EXACT resize.');
+				}
+
 				self::resize($image, $width, $height, self::FILL);
 				self::crop($image, '50%', '50%', $width, $height);
 				return;

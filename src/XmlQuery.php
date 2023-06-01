@@ -96,6 +96,10 @@
 
 			$attributes = $this->element->attributes($nsUri);
 
+			if ($attributes === NULL) {
+				$attributes = [];
+			}
+
 			foreach ($attributes as $name => $value) {
 				if ($attribute === $name) {
 					return (string) $value;
@@ -120,6 +124,10 @@
 			}
 
 			$attributes = $this->element->attributes($nsUri);
+
+			if ($attributes === NULL) {
+				return FALSE;
+			}
 
 			foreach ($attributes as $name => $value) {
 				if ($attribute === $name) {
