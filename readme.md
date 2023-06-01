@@ -1,7 +1,7 @@
 
 # Inteve\Utils
 
-[![Tests Status](https://github.com/inteve/utils/workflows/Tests/badge.svg)](https://github.com/inteve/utils/actions)
+[![Build Status](https://github.com/inteve/utils/workflows/Build/badge.svg)](https://github.com/inteve/utils/actions)
 
 Utility classes for web development
 
