@@ -1,7 +1,9 @@
-
 # Inteve\Utils
 
 [![Build Status](https://github.com/inteve/utils/workflows/Build/badge.svg)](https://github.com/inteve/utils/actions)
+[![Downloads this Month](https://img.shields.io/packagist/dm/inteve/utils.svg)](https://packagist.org/packages/inteve/utils)
+[![Latest Stable Version](https://poser.pugx.org/inteve/utils/v/stable)](https://github.com/inteve/utils/releases)
+[![License](https://img.shields.io/badge/license-New%20BSD-blue.svg)](https://github.com/inteve/utils/blob/master/license.md)
 
 Utility classes for web development
 
