@@ -131,7 +131,7 @@
 		/**
 		 * @param  int|string|NULL $width
 		 * @param  int|string|NULL $height
-		 * @param  int $flags
+		 * @param  Image::SHRINK_ONLY|Image::STRETCH|Image::FIT|Image::FILL|Image::EXACT $flags
 		 * @return void
 		 */
 		public static function resize(Imagick $image, $width, $height, $flags = self::FIT)
