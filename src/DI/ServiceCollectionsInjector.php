@@ -13,28 +13,39 @@
 		 */
 		public function beforeCompile()
 		{
+			if (class_exists(Nette\DI\Definitions\Definition::class)) {
+				// nette/di 3.x autowire collections automaticly
+				return;
+			}
+
 			$builder = $this->getContainerBuilder();
 
 			foreach ($builder->getDefinitions() as $definition) {
+				if (!($definition instanceof \Nette\DI\ServiceDefinition)) {
+					continue;
+				}
+
 				$factory = $definition->getFactory();
 
-				if (!($factory instanceof Nette\DI\Statement)) {
+				if (!($factory instanceof Nette\DI\Statement && property_exists($factory, 'arguments') && method_exists($factory, 'getEntity'))) {
 					continue;
 				}
 
-				if (!is_string($factory->entity)) {
+				$entity = $factory->getEntity();
+
+				if (!is_string($entity)) {
 					continue;
 				}
 
-				if (strpos($factory->entity, '@') !== FALSE) { // service name
+				if (strpos($entity, '@') !== FALSE) { // service name
 					continue;
 				}
 
-				if (strpos($factory->entity, '::') !== FALSE) { // method factory
+				if (strpos($entity, '::') !== FALSE) { // method factory
 					continue;
 				}
 
-				$className = $factory->entity;
+				$className = $entity;
 
 				if (!class_exists($className)) {
 					continue;
