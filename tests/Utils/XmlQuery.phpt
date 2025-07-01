@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Inteve\Utils\InvalidStateException;
 use Inteve\Utils\MissingException;
 use Inteve\Utils\XmlQuery;

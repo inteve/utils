@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Inteve\Utils\PaginatorHelper;
 use Nette\Utils\Paginator;
 use Tester\Assert;

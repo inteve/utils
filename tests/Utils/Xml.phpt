@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Inteve\Utils\InvalidArgumentException;
 use Inteve\Utils\XmlDocument;
 use Inteve\Utils\XmlElement;
