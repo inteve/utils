@@ -18,7 +18,7 @@ Utility classes for web development
 composer require inteve/utils
 ```
 
-Inteve\Utils requires PHP 5.6.0 or later.
+Inteve\Utils requires PHP 8.0 or later.
 
 
 ## Usage
