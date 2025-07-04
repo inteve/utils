@@ -53,7 +53,7 @@
 		 * @param  string $name
 		 * @return string
 		 */
-		public function getName($name, XmlNamespace $namespace = NULL)
+		public function getName($name, ?XmlNamespace $namespace = NULL)
 		{
 			if ($namespace === NULL) {
 				if (isset($this->namespaces[''])) {

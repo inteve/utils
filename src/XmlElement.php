@@ -144,7 +144,7 @@
 		/**
 		 * @return string
 		 */
-		public function toString(XmlContext $context = NULL)
+		public function toString(?XmlContext $context = NULL)
 		{
 			$tagName = $this->tagName;
 			$tagNamespaces = '';
